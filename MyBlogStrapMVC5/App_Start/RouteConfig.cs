@@ -20,6 +20,11 @@ namespace MyBlogStrapMVC5
             //);
 
             routes.MapRoute(
+              name: "AdminCP",
+              url: "AdminCP/{action}",
+              defaults: new { controller = "AdminCP", action = "Login" }
+          );
+            routes.MapRoute(
                name: "Posts",
                url: "Posts/{id}",
                defaults: new { controller = "Posts", action = "Post", id = UrlParameter.Optional }

@@ -165,6 +165,7 @@
     <Compile Include="Comment.cs">
       <DependentUpon>Blog_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AdminCPController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -193,6 +194,7 @@
     <Content Include="Views\Shared\_CategoryView.cshtml" />
     <Content Include="Views\Posts\Post.cshtml" />
     <Content Include="Views\Shared\_Comments.cshtml" />
+    <Content Include="Views\AdminCP\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
