@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Comment>
+
+
+<div class="row">
+    <div class="col-lg-6 col-md-6">
+        <form action="/Posts/Comment/@ViewBag.PostID" method="post">
+            <h2>Add Comment :</h2>
+            <input type="text" class="form-control" name="txtCommentAuthor" placeholder="Your Name..." /> <br />
+            <textarea rows="8" class="form-control" name="txtCommentContent" placeholder="Your Comment Here..."></textarea> <br />
+            <input type="submit" class="btn btn-success pull-right" name="btnComment" value="Comment" />
+        </form>
+    </div>
+</div>
+<hr />
+<br />
+
+@foreach (var comment in Model)
+{
+    <div class="well">
+        <h3>@comment.Author</h3>
+        <p>@comment.CommentContent</p>
+        <p><em>@comment.PublishDate</em></p>
+    </div>
+}

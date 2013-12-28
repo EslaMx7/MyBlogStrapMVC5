@@ -50,6 +50,8 @@
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -108,6 +110,23 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <EntityDeploy Include="Blog_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Blog_DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Blog_DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Blog_DB.edmx</DependentUpon>
+      <LastGenOutput>Blog_DB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Blog_DB.edmx.diagram">
+      <DependentUpon>Blog_DB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Blog_DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Blog_DB.edmx</DependentUpon>
+      <LastGenOutput>Blog_DB.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -128,15 +147,52 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Blog_DB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Blog_DB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Blog_DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Blog_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Blog_DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Blog_DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Comment.cs">
+      <DependentUpon>Blog_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Post.cs">
+      <DependentUpon>Blog_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostsTag.cs">
+      <DependentUpon>Blog_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Blog_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tag.cs">
+      <DependentUpon>Blog_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>Blog_DB.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Views\Shared\_CategoryView.cshtml" />
+    <Content Include="Views\Posts\Post.cshtml" />
+    <Content Include="Views\Shared\_Comments.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -147,6 +203,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

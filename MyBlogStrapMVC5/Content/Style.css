@@ -1,9 +1,14 @@
 ﻿body {
      padding-top: 30px;
+     min-width:480px;
 }
 
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
   background-color: #428bca;
+}
+
+#catbar {
+    min-width:180px;
 }

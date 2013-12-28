@@ -1,34 +1,29 @@
-﻿
+﻿@model IEnumerable<Post>
+
 <div class="row row-offcanvas row-offcanvas-right">
     <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9">
-       
 
-        <div class="jumbotron">
-            <h2><a href="#">Creating Linux Virtual Machine On Windows Azure and Install LAMP Stack Package via Terminal</a></h2>
-            <img class="postimg" src="http://icons.iconarchive.com/icons/prasilarts/claire-monitor/128/06-Computer-Windows-7-icon.png" title="Image Title !!!" />
-            <p>This is age viewport sizes to see it in action.</p>
-            <button class="btn btn-primary">Read More...</button>
-        </div>
-        <hr />
 
+        @foreach (var post in Model)
+        {
+
+
+            <div class="jumbotron">
+                <h2><a href="/Posts/@post.ID">@post.Title</a></h2>
+                <img class="postimg" src="@post.Thumbnail" title="@post.Title" />
+                <p>@post.Description</p>
+                <button class="btn btn-primary">Read More...</button>
+            </div>
+            <hr />
+        }
 
     </div>
 
 
     <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-        <div class="well sidebar-nav">
-            <ul class="nav">
-                <li><b>Categories</b></li>
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Programming</a></li>
-                <li><a href="#">Web</a></li>
-                <hr />
-                <li><b>Social Links</b></li>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Youtube</a></li>
-            </ul>
 
-        </div>
+        @Html.Partial("_CategoryView", new BlogEntities().Tags.AsEnumerable<Tag>())
+
         <!--/.well -->
         <a class="twitter-timeline" href="https://twitter.com/EslaMx7" data-widget-id="386756343878541312">Tweets by EslaMx7</a>
         <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>

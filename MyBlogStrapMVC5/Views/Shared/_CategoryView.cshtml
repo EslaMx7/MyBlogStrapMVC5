@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MyBlogStrapMVC5.Tag>
+
+
+<div id="catbar" class="well sidebar-nav">
+    <ul class="nav">
+
+        <li><b>Categories</b></li>
+
+        @foreach (var cat in Model.Where(c => c.IsCategory == true))
+        {
+            <li><a href="#">@cat.Name</a></li>
+
+        }
+
+        <li><b>Tags</b></li>
+        @foreach (var tag in Model.Where(t => t.IsTag == true))
+        {
+            <li><a href="#">@tag.Name</a></li>
+
+        }
+        <hr />
+        <li><b>Social Links</b></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Youtube</a></li>
+    </ul>
+
+
+
+</div>

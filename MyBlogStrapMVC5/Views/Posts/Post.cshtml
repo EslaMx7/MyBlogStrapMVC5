@@ -1,0 +1,16 @@
+﻿@model Post
+
+
+<div class="jumbotron">
+    <h2><a href="#">@Model.Title</a></h2>
+    <img class="postimg" src="@Model.Thumbnail" title="@Model.Title" />
+    <div id="postcontent">
+        @Html.Raw(@Model.PostContent);
+    </div>
+   
+</div>
+<button class="btn btn-primary">Show Comments....</button>
+<hr />
+
+@Html.Partial("_Comments", new BlogEntities().Comments.Where(c => c.PostID == Model.ID).AsEnumerable<Comment>())
+

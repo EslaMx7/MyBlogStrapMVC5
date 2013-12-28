@@ -13,6 +13,22 @@ namespace MyBlogStrapMVC5
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            //);
+
+            routes.MapRoute(
+               name: "Posts",
+               url: "Posts/{id}",
+               defaults: new { controller = "Posts", action = "Post", id = UrlParameter.Optional }
+           );
+            routes.MapRoute(
+                name: "BlogHome",
+                url: "{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
